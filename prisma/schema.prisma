@@ -32,6 +32,7 @@ model TagsOnDevices {
   deviceId Int
   tag      Tag    @relation(fields: [tagId], references: [id])
   tagId    Int
+
   @@id([deviceId, tagId])
 }
 
@@ -79,7 +80,7 @@ model Telemetry {
   acceleration_x Float?
   acceleration_y Float?
   acceleration_z Float?
-  detectedTag    String?  @db.VarChar(255)
+  detectedTag    Int?
   tagBattery     Int? //0-100%
   createdAt      DateTime @default(now())
   alarm          Alarm?   @relation(fields: [alarmId], references: [id])

@@ -47,6 +47,7 @@ model Device {
   deviceParamsId Int
   alarms         Alarm[]
   TagsOnDevices  TagsOnDevices[]
+  Telemetry      Telemetry[]
 }
 
 model DeviceParams {
@@ -74,6 +75,8 @@ model Alarm {
 
 model Telemetry {
   id             Int      @id @default(autoincrement())
+  device         Device   @relation(fields: [deviceId], references: [id])
+  deviceId       Int
   latitude       Float
   longitude      Float
   heading        Float

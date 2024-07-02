@@ -61,16 +61,15 @@ model DeviceParams {
 }
 
 model Alarm {
-  id            Int         @id @default(autoincrement())
-  active        Boolean     @default(true)
-  createdAt     DateTime    @default(now())
-  updatedAt     DateTime    @updatedAt
-  deactivatedAt DateTime?
-  telemetry     Telemetry[]
-  device        Device      @relation(fields: [deviceId], references: [id])
-  deviceId      Int
-  snapShot      String?
-  trigger       Trigger
+  id        Int         @id @default(autoincrement())
+  active    Boolean     @default(true)
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+  telemetry Telemetry[]
+  device    Device      @relation(fields: [deviceId], references: [id])
+  deviceId  Int
+  snapShot  String?
+  trigger   Trigger
 }
 
 model Telemetry {
@@ -104,7 +103,7 @@ model User {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  Device    Device[]
+  devices    Device[]
 }
 
 model Account {

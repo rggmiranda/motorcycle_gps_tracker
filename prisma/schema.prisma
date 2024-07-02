@@ -38,7 +38,7 @@ model TagsOnDevices {
 
 model Device {
   id             Int             @id @default(autoincrement())
-  alarmArmed     Boolean
+  alarmArmed     Boolean         @default(false)
   name           String          @db.VarChar(255)
   createdAt      DateTime        @default(now())
   user           User            @relation(fields: [userId], references: [id])

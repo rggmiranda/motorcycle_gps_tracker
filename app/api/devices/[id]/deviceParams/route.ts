@@ -13,6 +13,7 @@ export async function PATCH(request: NextRequest, { params }: { params: { id: st
 
     const { shutDownDistance, shutDownMaxSpeed, batteryLevelAlarm, minBatteryLevelAlarm, vibrationTriggerLevel } = body;
 
+    //Check that the device exists
     const device = await prisma.device.findUnique({
         where: { id: parseInt(params.id) },
     });
@@ -21,6 +22,9 @@ export async function PATCH(request: NextRequest, { params }: { params: { id: st
             { error: "Invalid device" },
             { status: 404 }
         );
+
+        
+    //Check that the deviceParams exists
     const deviceParams = await prisma.deviceParams.findUnique({
         where: { id: device?.deviceParamsId },
     });

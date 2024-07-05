@@ -13,7 +13,8 @@ export async function PATCH(request: NextRequest, { params }: { params: { id: st
       });
 
    const { active } = body;
-
+   
+   //Check that the alarm exists
    const alarm = await prisma.alarm.findUnique({
       where: { id: parseInt(params.id) },
    });
@@ -23,6 +24,7 @@ export async function PATCH(request: NextRequest, { params }: { params: { id: st
          { status: 404 }
       );
 
+   //Alarms can only be disabled once active, all other operations are not allowed
    let errorMsg = ""
    if (active === true && alarm.active === true) {
       errorMsg = "Alarm is already active"

@@ -14,6 +14,7 @@ export async function PATCH(request: NextRequest, { params }: { params: { id: st
 
    const { userId } = body;
 
+   //Check if user exists in DB
    if (userId) {
       const user = await prisma.user.findUnique({
          where: { id: userId },
@@ -25,6 +26,7 @@ export async function PATCH(request: NextRequest, { params }: { params: { id: st
          );
    }
 
+   //Find if tag exists in DB
    const tag = await prisma.tag.findUnique({
       where: { id: parseInt(params.id) },
    });
@@ -34,6 +36,7 @@ export async function PATCH(request: NextRequest, { params }: { params: { id: st
          { status: 404 }
       );
 
+   //Update userId (Tags can be transfered, the battery status is updated trough telemetries)
    const updatedTag = await prisma.tag.update({
       where: { id: tag.id },
       data: {
@@ -49,6 +52,8 @@ export async function GET(
    request: NextRequest,
    { params }: { params: { id: string } }
 ) {
+
+   //Check that tag exists
    const tag = await prisma.tag.findUnique({
       where: { id: parseInt(params.id) },
    });
@@ -60,6 +65,7 @@ export async function GET(
       );
 
 
+   //Search for all the devices asociated to the tag and return the json object with the devices field
    const tagsOnDevices = await prisma.tagsOnDevices.findMany({
       where: { tagId: tag.id }
    });

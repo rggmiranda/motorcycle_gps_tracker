@@ -48,7 +48,6 @@ export async function PATCH(request: NextRequest, { params }: { params: { id: st
     return NextResponse.json(updatedDevice);
 }
 
-
 export async function DELETE(
     request: NextRequest,
     { params }: { params: { id: string } }
@@ -69,8 +68,6 @@ export async function DELETE(
 
     return NextResponse.json({});
 }
-
-
 
 export async function GET(
     request: NextRequest,

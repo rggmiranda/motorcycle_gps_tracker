@@ -1,0 +1,7 @@
+-- AlterTable
+ALTER TABLE `tag` ADD COLUMN `userId` VARCHAR(191) NULL,
+    MODIFY `name` VARCHAR(191) NULL,
+    MODIFY `batteryLevel` INTEGER NULL;
+
+-- AddForeignKey
+ALTER TABLE `Tag` ADD CONSTRAINT `Tag_userId_fkey` FOREIGN KEY (`userId`) REFERENCES `User`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;

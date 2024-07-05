@@ -2,15 +2,6 @@ import {z} from "zod"
 import { Trigger } from "@prisma/client";
 
 
-// // Helper function to convert TypeScript enum to Zod enum
-// const createZodEnumFromTsEnum = (enumObj: object) => {
-//     const enumValues = Object.values(enumObj);
-//     return z.enum(enumValues as [string, ...string[]]);
-//   };
-  
-//   // Automatically create Zod enum schema from TypeScript enum
-//   const TriggerEnum = createZodEnumFromTsEnum(Trigger);
-
 
 export const createDeviceSchema = z.object({
     name: z.string().min(1, "Name is required.").max(255),
@@ -39,4 +30,14 @@ export const createAlarmSchema = z.object({
 
 export const modifyAlarmSchema = z.object({
     active: z.boolean()
+});
+
+export const createTagSchema = z.object({
+    serial: z.string().min(1,"Serial number is required"),
+    userId: z.string().min(1,"Assigned user is required")
+});
+
+export const modifyTagSchema = z.object({
+    userId: z.string().min(1,"Assigned user is required").optional(),
+    batteryLevel: z.number().min(0).max(100).optional()
 });

@@ -49,7 +49,7 @@ export async function GET(request: NextRequest) {
 
       const url = new URL(request.url);
       const userId = url.searchParams.get('userId') ?? '';
-      console.log(userId)
+      // console.log(userId)
       const alarms = await prisma.alarm.findMany({
             where: {
                   device:{

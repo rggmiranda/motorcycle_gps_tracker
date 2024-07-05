@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE `tag` MODIFY `name` VARCHAR(191) NULL DEFAULT '';

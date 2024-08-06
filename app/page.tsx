@@ -4,7 +4,7 @@ import SlideBar from "./_components/SlideBar";
 
 export default function Home() {
   return <div>
-    <Button>Boton</Button>
-    <SlideBar></SlideBar>
+    {/* <Button>Boton</Button> */}
+    {/* <SlideBar></SlideBar> */}
   </div>;
 }

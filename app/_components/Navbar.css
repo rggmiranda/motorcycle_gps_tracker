@@ -1,0 +1,7 @@
+.image-dropdown .dropdown-toggle::after {
+   display: none;
+ }
+
+ .text {
+  color: #575757; /* Ensure the text color inherits from the parent */
+}

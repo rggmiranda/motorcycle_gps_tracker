@@ -5,3 +5,11 @@
  .text {
   color: #575757; /* Ensure the text color inherits from the parent */
 }
+
+.dropdown-toggle::after{
+  display: none;
+}
+
+.nav-link {
+  padding: 0;
+}

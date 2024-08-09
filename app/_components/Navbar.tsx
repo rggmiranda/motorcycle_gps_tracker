@@ -15,7 +15,7 @@ function CollapsibleExample() {
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container>
-        <Navbar.Brand href="#home">
+        <Navbar.Brand href="home">
           <div>
             <img
               src="/logo.png"
@@ -33,11 +33,12 @@ function CollapsibleExample() {
             <Nav.Link
               className={`${isMobile ? "my-1" : ""}`}
               eventKey={2}
-              href="#dashboard"
+              href="dashboard"
+              hidden={status !== "authenticated"}
             >
               Dashboard
             </Nav.Link>
-            <Nav.Link className={`${isMobile ? "my-1" : ""}`} href="#Store">
+            <Nav.Link className={`${isMobile ? "my-1" : ""}`} href="store">
               Store
             </Nav.Link>
           </Nav>
@@ -65,7 +66,7 @@ function CollapsibleExample() {
                 id="collapsible-nav-dropdown"
                 align={isMobile ? "start" : "end"}
               >
-                <NavDropdown.Item href="#user/config">
+                <NavDropdown.Item href="user/config">
                   User configuration
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
